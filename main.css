@@ -7,12 +7,24 @@ body {
     color: white; background-color: #000;
 }
 
+/* PANTALLA DE CARGA */
+#loading-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #000; display: flex; justify-content: center;
+    align-items: center; z-index: 9999; transition: opacity 0.8s ease;
+}
+.loading-content { text-align: center; width: 300px; }
+#loading-text { color: #FFF; font-size: 2rem; margin-bottom: 20px; text-shadow: 2px 2px #373737; }
+.loading-bar-container { width: 100%; height: 10px; background: #555; border: 2px solid #FFF; margin-bottom: 10px; }
+.loading-bar-fill { width: 0%; height: 100%; background: #55FF55; transition: width 0.2s; }
+#loading-subtext { color: #AAA; font-size: 1.2rem; }
+
+/* CAPAS DE FONDO */
 .bg-layer {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background-size: cover; background-position: center;
     z-index: -1; transition: opacity 4s ease-in-out;
 }
-
 .bg-layer::after {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.4);
@@ -46,57 +58,30 @@ body {
     color: #FFF; font-family: 'VT323', monospace; font-size: 1.6rem;
     text-shadow: 2px 2px #000;
 }
-
 .mc-button:hover { background-color: #5AA35F; }
 
-/* HUD ESTILO MINECRAFT */
+/* HUD */
 .hud-container {
     position: fixed; bottom: 20px; left: 50%;
     transform: translateX(-50%); z-index: 30; pointer-events: none;
 }
-
-.bars-wrapper {
-    display: flex; justify-content: space-between;
-    width: 380px; margin-bottom: 5px;
-}
-
+.bars-wrapper { display: flex; justify-content: space-between; width: 380px; margin-bottom: 5px; }
 .hearts, .food { font-size: 1.2rem; filter: drop-shadow(2px 2px #000); letter-spacing: -2px; }
-
-.exp-bar-container {
-    width: 380px; height: 10px; background: rgba(0, 0, 0, 0.5);
-    border: 2px solid #000; position: relative;
-}
-
+.exp-bar-container { width: 380px; height: 10px; background: rgba(0, 0, 0, 0.5); border: 2px solid #000; position: relative; }
 .exp-bar-fill { width: 100%; height: 100%; background: #7cfc00; }
+.exp-number { position: absolute; top: -22px; left: 50%; transform: translateX(-50%); color: #7cfc00; font-size: 1.6rem; text-shadow: 2px 2px #000; }
 
-.exp-number {
-    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
-    color: #7cfc00; font-size: 1.6rem; text-shadow: 2px 2px #000;
-}
-
-/* CHAT ESTILO MINECRAFT */
+/* CHAT */
 .mc-chat {
     position: fixed; bottom: 100px; left: 20px;
     width: 450px; height: 180px; display: flex;
     flex-direction: column; justify-content: flex-end;
     pointer-events: none; z-index: 25; font-size: 1.3rem;
 }
-
-.chat-line {
-    margin: 2px 0; text-shadow: 2px 2px #000;
-    background: rgba(0, 0, 0, 0.3); padding: 2px 8px; width: fit-content;
-}
-
-.chat-achievement { color: #FFF; }
-.chat-achievement span { color: #55FF55; } /* Verde de logro */
+.chat-line { margin: 2px 0; text-shadow: 2px 2px #000; background: rgba(0, 0, 0, 0.3); padding: 2px 8px; width: fit-content; }
+.chat-achievement span { color: #55FF55; }
 .chat-system { color: #AAA; }
 
-.overlay {
-    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 100;
-}
-
-.modal {
-    background: #c6c6c6; border: 4px solid #000; padding: 30px;
-    color: #000; text-align: center; box-shadow: inset -4px -4px 0px #555;
-}
+/* MODAL */
+.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 100; }
+.modal { background: #c6c6c6; border: 4px solid #000; padding: 30px; color: #000; text-align: center; box-shadow: inset -4px -4px 0px #555; }
