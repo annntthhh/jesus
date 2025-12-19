@@ -8,15 +8,29 @@
 </head>
 <body>
 
+    <div class="coordinates">
+        XYZ: 30 / 03 / 2023 <br>
+        Biome: Amor Eterno <br>
+        Looking at: El mejor novio
+    </div>
+
     <div class="menu-container">
         <h1 class="logo">MINECRAFT <br> <span>EDICIÓN NOVIO</span></h1>
         
-        <div class="splash-text" id="splash">¡Eres mi jugador favorito!</div>
+        <div class="splash-text" id="splash">¡Cargando amor...!</div>
 
         <div class="button-container">
-            <button class="mc-button">JUGAR CONMIGO</button>
-            <button class="mc-button">NUESTRAS FOTOS</button>
-            <button class="mc-button">LOGROS</button>
+            <button class="mc-button" onclick="mostrarSorpresa('logro')">VER LOGROS</button>
+            <button class="mc-button" onclick="mostrarSorpresa('carta')">LEER LIBRO</button>
+            <button class="mc-button" onclick="window.location.reload()">GENERAR NUEVA FRASE</button>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="cerrar()">
+        <div class="modal">
+            <div id="modal-text"></div>
+            <br>
+            <button class="mc-button" style="width: 100px; font-size: 1rem;">CERRAR</button>
         </div>
     </div>
 
