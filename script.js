@@ -1,4 +1,4 @@
-const imagenes = ['imagen2.png', 'imagen3.png', 'imagen4.png', 'imagen5.png'];
+const imagenes = ['imagen2.png', 'imagen3.png', 'imagen4.png'];
 const mensajes = ["¡Eres mi diamante!", "¡Jugador 1 + Jugador 2!", "¡Mi bioma favorito!", "¡Crafteando recuerdos!"];
 
 let indiceActual = 0;
@@ -8,18 +8,15 @@ function cambiarFondo() {
     const bg1 = document.getElementById('bg-1');
     const bg2 = document.getElementById('bg-2');
     const splash = document.getElementById('splash');
-    
     const nuevaRuta = imagenes[indiceActual] + "?v=" + new Date().getTime();
     
     if (capaActiva === 1) {
         bg2.style.backgroundImage = `url('${nuevaRuta}')`;
-        bg2.style.opacity = 1;
-        bg1.style.opacity = 0;
+        bg2.style.opacity = 1; bg1.style.opacity = 0;
         capaActiva = 2;
     } else {
         bg1.style.backgroundImage = `url('${nuevaRuta}')`;
-        bg1.style.opacity = 1;
-        bg2.style.opacity = 0;
+        bg1.style.opacity = 1; bg2.style.opacity = 0;
         capaActiva = 1;
     }
 
@@ -38,24 +35,43 @@ function agregarMensajeChat(texto, clase) {
 }
 
 window.onload = function() {
-    // Iniciar fondos
+    // 1. Iniciar fondos
     const bg1 = document.getElementById('bg-1');
     bg1.style.backgroundImage = `url('${imagenes[0]}?v=${new Date().getTime()}')`;
     setInterval(cambiarFondo, 12000);
 
-    // Secuencia de Chat
-    setTimeout(() => {
-        agregarMensajeChat("Jesu se ha unido al mundo", "");
-    }, 2000);
+    // 2. Lógica de Pantalla de Carga
+    const loadFill = document.getElementById('load-fill');
+    const loadingScreen = document.getElementById('loading-screen');
+    const subtext = document.getElementById('loading-subtext');
+    let progreso = 0;
 
-    setTimeout(() => {
-        agregarMensajeChat("Jesu ha obtenido el logro: <span>Visitar minecraft de Ane</span>", "chat-achievement");
-    }, 5000);
+    const intervaloCarga = setInterval(() => {
+        progreso += Math.random() * 15;
+        if (progreso > 100) progreso = 100;
+        loadFill.style.width = progreso + "%";
 
-    setTimeout(() => {
-        agregarMensajeChat("Se ha guardado la partida con éxito!", "chat-system");
-    }, 8000);
+        if (progreso >= 40) subtext.innerText = "Generando estructuras de amor...";
+        if (progreso >= 80) subtext.innerText = "Colocando bloques de felicidad...";
+
+        if (progreso === 100) {
+            clearInterval(intervaloCarga);
+            setTimeout(() => {
+                loadingScreen.style.opacity = "0";
+                setTimeout(() => {
+                    loadingScreen.style.display = "none";
+                    iniciarChat(); // Inicia el chat tras la carga
+                }, 800);
+            }, 500);
+        }
+    }, 300);
 };
+
+function iniciarChat() {
+    setTimeout(() => agregarMensajeChat("Jesu se ha unido al mundo", ""), 1000);
+    setTimeout(() => agregarMensajeChat("Jesu ha obtenido el logro: <span>Visitar minecraft de Ane</span>", "chat-achievement"), 4000);
+    setTimeout(() => agregarMensajeChat("Se ha guardado la partida con éxito!", "chat-system"), 7000);
+}
 
 function mostrarSorpresa(tipo) {
     const overlay = document.getElementById('overlay');
