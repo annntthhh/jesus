@@ -1,7 +1,6 @@
 const imagenes = [
     'imagen2.png',
     'imagen3.png',
-    'imagen4.png',
 ];
 
 const mensajes = [
