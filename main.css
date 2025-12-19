@@ -1,0 +1,70 @@
+/* Importamos una fuente pixelada */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://www.minecraft.net/content/dam/games/minecraft/key-art/Games_Subnav_Minecraft-Wild-Update_600x338.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'VT323', monospace;
+    
+    /* AQUÍ VA LO DEL CURSOR */
+    /* Asegúrate de tener un archivo llamado espada.png en tu carpeta */
+    cursor: url('https://i.imgur.com/v9E9T6p.png'), auto; 
+}
+
+/* Contenedor principal */
+.menu-container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border: 4px solid #000;
+}
+
+/* Título estilo Minecraft */
+.logo {
+    color: white;
+    font-size: 4rem;
+    text-shadow: 4px 4px #373737;
+    margin-bottom: 10px;
+}
+
+/* Texto amarillo animado */
+.splash-text {
+    color: #FFFF00;
+    font-size: 1.5rem;
+    transform: rotate(-15deg);
+    animation: bounce 0.5s infinite alternate;
+    margin-bottom: 30px;
+}
+
+@keyframes bounce {
+    from { transform: rotate(-15deg) scale(1); }
+    to { transform: rotate(-15deg) scale(1.1); }
+}
+
+/* Botones estilo Minecraft */
+.mc-button {
+    display: block;
+    width: 250px;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #AAAAAA;
+    border: 3px solid #000;
+    border-top-color: #FFF;
+    border-left-color: #FFF;
+    color: white;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px #373737;
+    cursor: url('https://i.imgur.com/v9E9T6p.png'), pointer;
+}
+
+.mc-button:hover {
+    background-color: #5AA35F; /* Verde al pasar el mouse */
+    border-top-color: #80FF80;
+}
