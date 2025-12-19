@@ -5,7 +5,7 @@ const mensajes = [
     "¡Mi bioma favorito eres tú!",
     "¡Desde el 30/03/2023!",
     "¡Player 1 & Player 2!",
-    "¡El mejor equipo de minería!"
+    "¡El mejor equipo!"
 ];
 
 window.onload = function() {
