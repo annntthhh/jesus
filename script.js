@@ -3,7 +3,9 @@ const mensajes = [
     "¡Cuidado con los Creepers!",
     "Juntos hasta el Nether",
     "¡Mi bioma favorito eres tú!",
-    "Mirando las coordenadas..."
+    "¡Desde el 30/03/2023!",
+    "¡Player 1 & Player 2!",
+    "¡El mejor equipo de minería!"
 ];
 
 window.onload = function() {
@@ -18,9 +20,9 @@ function mostrarSorpresa(tipo) {
     overlay.style.display = 'flex';
     
     if(tipo === 'logro') {
-        texto.innerHTML = "<h2>¡Logro Obtenido!</h2><p>Has encontrado el tesoro más valioso: Mi Corazón.</p>";
+        texto.innerHTML = "<h2 style='color:#000'>¡Logro Obtenido!</h2><p>Has encontrado el tesoro más valioso: El corazón de tu novia.</p>";
     } else if (tipo === 'carta') {
-        texto.innerHTML = "<h2>Libro y Pluma</h2><p>Desde el 30/03/2023 mi mundo es mucho mejor porque tú estás en él. ¡Te amo!</p>";
+        texto.innerHTML = "<h2 style='color:#000'>Libro y Pluma</h2><p>Gracias por ser mi compañero de aventuras desde el 30/03/2023. ¡Te amo infinitamente!</p>";
     }
 }
 
