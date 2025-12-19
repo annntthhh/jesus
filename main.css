@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+* {
+    /* Esto fuerza a que el cursor de espada esté en TODO el sitio */
+    cursor: url('https://cur.cursors-4u.net/games/gam-4/gam388.cur'), auto !important;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,17 +12,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* FONDO DE MINECRAFT */
+    /* FONDO PANORÁMICO ESTABLE */
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                url('https://images.alphacoders.com/132/1327170.png') no-repeat center center fixed;
+                url('https://wallpaperaccess.com/full/253303.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'VT323', monospace;
-    /* CURSOR DE ESPADA */
-    cursor: url('https://i.imgur.com/v9E9T6p.png'), auto;
     overflow: hidden;
 }
 
-/* Coordenadas arriba a la izquierda */
 .coordinates {
     position: absolute;
     top: 15px;
@@ -26,17 +28,16 @@ body {
     font-size: 1.3rem;
     text-shadow: 2px 2px #000;
     background: rgba(0, 0, 0, 0.4);
-    padding: 5px 10px;
-    border-radius: 2px;
+    padding: 10px;
+    pointer-events: none; /* Para que no interfiera con el click */
 }
 
-/* Marco del Menú */
 .menu-container {
     text-align: center;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     padding: 50px;
     border: 4px solid #1e1e1e;
-    box-shadow: inset 0 0 20px #000;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
 
 .logo-main {
@@ -60,20 +61,19 @@ body {
     transform: rotate(-15deg);
     display: inline-block;
     animation: bounce 0.5s infinite alternate;
-    margin: 20px 0;
+    margin: 25px 0;
     text-shadow: 2px 2px #373737;
 }
 
 @keyframes bounce {
-    from { transform: rotate(-15deg) scale(1); }
-    to { transform: rotate(-15deg) scale(1.1); }
+    from { transform: rotate(-15deg) scale(1.0); }
+    to { transform: rotate(-15deg) scale(1.15); }
 }
 
-/* BOTONES ESTILO MINECRAFT GRIS */
 .mc-button {
     display: block;
     width: 320px;
-    padding: 10px;
+    padding: 12px;
     margin: 12px auto;
     background-color: #6c6c6c;
     border: 3px solid #000;
@@ -83,21 +83,19 @@ body {
     font-family: 'VT323', monospace;
     font-size: 1.8rem;
     text-shadow: 2px 2px #000;
-    cursor: url('https://i.imgur.com/v9E9T6p.png'), pointer;
 }
 
 .mc-button:hover {
-    background-color: #7da455; /* Verde al pasar el mouse */
+    background-color: #7da455;
     border-top-color: #a9d682;
     color: #FFF;
 }
 
-/* Modal / Ventanas emergentes */
 .overlay {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.9);
     justify-content: center;
     align-items: center;
     z-index: 100;
@@ -111,5 +109,4 @@ body {
     text-align: center;
     box-shadow: inset -4px -4px 0px #555, inset 4px 4px 0px #FFF;
     color: #373737;
-    font-size: 1.5rem;
 }
