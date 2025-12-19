@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-/* Cursor de espada para todo el sitio */
-* {
+/* Cursor de espada global */
+html, body, button {
     cursor: url('https://cur.cursors-4u.net/games/gam-4/gam388.cur'), auto !important;
 }
 
@@ -12,14 +12,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* FONDO vinculado a tu archivo image.png */
-    /* El linear-gradient es para que la imagen se vea un poco oscura y resalte el texto */
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('image.png') no-repeat center center fixed;
-    background-size: cover;
     font-family: 'VT323', monospace;
     overflow: hidden;
     color: white;
+
+    /* Configuración para el cambio de fondo suave */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1.5s ease-in-out;
+    background-color: #4a7a3a; /* Color de respaldo */
 }
 
 .coordinates {
@@ -28,7 +30,6 @@ body {
     left: 15px;
     font-size: 1.3rem;
     text-shadow: 2px 2px #000;
-    pointer-events: none;
 }
 
 .menu-container {
@@ -36,14 +37,12 @@ body {
     background: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border: 4px solid #000;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
 .logo-main {
     font-size: 4.5rem;
     margin: 0;
     text-shadow: 5px 5px #373737;
-    letter-spacing: 3px;
 }
 
 .logo-sub {
@@ -59,7 +58,7 @@ body {
     transform: rotate(-15deg);
     display: inline-block;
     animation: bounce 0.5s infinite alternate;
-    margin: 20px 0;
+    margin: 25px 0;
     text-shadow: 2px 2px #373737;
 }
 
@@ -85,7 +84,6 @@ body {
 
 .mc-button:hover {
     background-color: #5AA35F;
-    border-top-color: #a9d682;
 }
 
 .overlay {
