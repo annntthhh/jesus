@@ -1,4 +1,3 @@
-// Lista de tus fotos EXACTAS de GitHub
 const imagen = [
     'imagen1.png',
     'imagen2.png',
@@ -10,38 +9,35 @@ const mensajes = [
     "¡Jugador 1 + Jugador 2!",
     "¡Desde el 30/03/2023!",
     "¡Mi bioma favorito!",
-    "¡Crafteando recuerdos!"
+    "¡Crafteando recuerdos!",
+    "¡Nuestra propia aventura!"
 ];
 
 let indice = 0;
 
-function rotarImagen() {
+function rotarContenido() {
     const body = document.body;
+    const splash = document.getElementById('splash');
     
-    // El truco '?v=' ayuda a que la imagen cargue aunque GitHub esté lento
-    const cacheBuster = "?v=" + new Date().getTime();
-    const nombreArchivo = imagen[indice] + cacheBuster;
-    
-    // Aplicamos el fondo con el filtro oscuro para que las letras se vean
+    // 1. Cambiar Imagen con truco para evitar errores de carga
+    const version = new Date().getTime();
+    const nombreArchivo = imagen[indice] + "?v=" + version;
     body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${nombreArchivo}')`;
     
-    console.log("Cambiando a: " + imagen[indice]);
+    // 2. Cambiar Texto Splash al mismo tiempo
+    if(splash) {
+        splash.innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
+    }
     
     indice = (indice + 1) % imagen.length;
 }
 
 window.onload = function() {
-    // Splash Text aleatorio
-    const splash = document.getElementById('splash');
-    if(splash) {
-        splash.innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
-    }
+    // Iniciar el primer estado
+    rotarContenido();
     
-    // Carga la primera imagen de inmediato
-    rotarImagen();
-    
-    // Cambia la imagen cada 6 segundos
-    setInterval(rotarImagen, 6000);
+    // CAMBIO: Cambia cada 15 segundos (15000ms) para dar tiempo a apreciar la mezcla de 4s
+    setInterval(rotarContenido, 15000);
 };
 
 function mostrarSorpresa(tipo) {
