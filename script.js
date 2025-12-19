@@ -6,7 +6,6 @@ const imagenes = [
 const mensajes = [
     "¡Eres mi diamante!",
     "¡Jugador 1 + Jugador 2!",
-    "¡Desde el 30/03/2023!",
     "¡Mi bioma favorito!",
     "¡Crafteando recuerdos!"
 ];
