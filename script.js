@@ -1,15 +1,14 @@
 const mensajes = [
     "¡Eres mi diamante!",
-    "¡Cuidado con los Creepers!",
-    "Juntos hasta el Nether",
-    "¡Mi bioma favorito eres tú!",
-    "¡Desde el 30/03/2023!"
+    "¡Jugador 1 + Jugador 2!",
+    "¡Desde el 30/03/2023!",
+    "¡Mi bioma favorito!",
+    "¡Crafteando recuerdos!"
 ];
 
 window.onload = function() {
     const splash = document.getElementById('splash');
-    const mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
-    splash.innerText = mensajeAleatorio;
+    splash.innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
 };
 
 function mostrarSorpresa(tipo) {
@@ -18,9 +17,11 @@ function mostrarSorpresa(tipo) {
     overlay.style.display = 'flex';
     
     if(tipo === 'logro') {
-        texto.innerHTML = "<h2>¡Logro Obtenido!</h2><p>Has encontrado el tesoro más valioso: El corazón de tu novia.</p>";
+        texto.innerHTML = "<h2>¡Logro Obtenido!</h2><p>Has ganado el corazón de la mejor novia del mundo pixelado.</p>";
     } else if (tipo === 'carta') {
-        texto.innerHTML = "<h2>Libro y Pluma</h2><p>Gracias por ser mi compañero de aventuras desde el 30/03/2023. ¡Te amo!</p>";
+        texto.innerHTML = "<h2>Libro y Pluma</h2><p>Gracias por cada aventura, cada risa y cada bloque colocado juntos desde el 30/03/2023. ¡Te amo!</p>";
+    } else if (tipo === 'craft') {
+        texto.innerHTML = "<h2>Mesa de Trabajo</h2><p>Resultado del crafteo: <br> <b>1 Novio Increíble + 1 Novia Feliz = Un amor infinito.</b> ❤️</p>";
     }
 }
 
