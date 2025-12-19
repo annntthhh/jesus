@@ -1,4 +1,4 @@
-const imagenes = ['imagen2.png', 'imagen3.png', 'imagen4.png'];
+const imagenes = ['imagen2.png', 'imagen3.png'];
 const frasesSplash = ["¡Eres mi diamante!", "¡Jugador 1 + Jugador 2!", "¡Mi bioma favorito!", "¡Crafteando recuerdos!"];
 let indiceActual = 0;
 let tiempoInactivo;
