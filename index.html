@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft - Edición Jesu</title>
-    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -12,26 +11,34 @@
     <div id="loading-screen">
         <div class="loading-content">
             <h2 id="loading-text">Cargando terreno...</h2>
-            <div class="loading-bar-container">
-                <div class="loading-bar-fill" id="load-fill"></div>
-            </div>
+            <div class="loading-bar-container"><div class="loading-bar-fill" id="load-fill"></div></div>
             <p id="loading-subtext">Buscando Bioma: Amor Eterno...</p>
         </div>
+    </div>
+
+    <div id="game-over-screen">
+        <div class="death-content">
+            <h1>¡Has muerto!</h1>
+            <p>La belleza de Ane fue demasiada para Jesu</p>
+            <button class="mc-button" onclick="renacer()">RENACER</button>
+        </div>
+    </div>
+
+    <div class="tab-list">
+        <div class="tab-header">Servidor: Amor Eterno</div>
+        <div class="player"><span class="status">🟢</span> Jesu <span class="ping">30ms</span></div>
+        <div class="player"><span class="status">🟢</span> Ane <span class="ping">1ms</span></div>
     </div>
 
     <div id="bg-1" class="bg-layer"></div>
     <div id="bg-2" class="bg-layer" style="opacity: 0;"></div>
 
-    <div class="coordinates">
-        XYZ: 30 / 03 / 2023 <br>
-        Bioma: Amor Eterno
-    </div>
+    <div class="coordinates">XYZ: 30 / 03 / 2023 <br> Bioma: Amor Eterno</div>
 
     <div class="menu-container">
         <h1 class="logo-main">MINECRAFT</h1>
         <h2 class="logo-sub">EDICIÓN JESU</h2>
-        <div class="splash-text" id="splash">¡Cargando...!</div>
-
+        <div class="splash-text" id="splash">¡Te amo!</div>
         <div class="button-container">
             <button class="mc-button" onclick="mostrarSorpresa('logro')">VER LOGROS</button>
             <button class="mc-button" onclick="mostrarSorpresa('carta')">LEER LIBRO</button>
@@ -44,20 +51,13 @@
             <div class="hearts">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</div>
             <div class="food">🍗🍗🍗🍗🍗🍗🍗🍗🍗🍗</div>
         </div>
-        <div class="exp-bar-container">
-            <div class="exp-number">30</div>
-            <div class="exp-bar-fill"></div>
-        </div>
+        <div class="exp-bar-container"><div class="exp-number">30</div><div class="exp-bar-fill"></div></div>
     </div>
 
     <div class="mc-chat" id="chat-box"></div>
 
     <div id="overlay" class="overlay" onclick="cerrar()">
-        <div class="modal">
-            <div id="modal-text"></div>
-            <br>
-            <button class="mc-button" style="width: 120px; font-size: 1.2rem;">CERRAR</button>
-        </div>
+        <div class="modal"><div id="modal-text"></div><br><button class="mc-button" style="width: 120px;">CERRAR</button></div>
     </div>
 
     <script src="script.js"></script>
