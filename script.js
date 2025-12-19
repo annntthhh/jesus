@@ -3,12 +3,27 @@ const mensajes = [
     "¡Cuidado con los Creepers!",
     "Juntos hasta el Nether",
     "¡Mi bioma favorito eres tú!",
-    "Crafting amor desde 2024"
+    "Mirando las coordenadas..."
 ];
 
-// Función para elegir un mensaje al azar
 window.onload = function() {
     const splash = document.getElementById('splash');
     const mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
     splash.innerText = mensajeAleatorio;
 };
+
+function mostrarSorpresa(tipo) {
+    const overlay = document.getElementById('overlay');
+    const texto = document.getElementById('modal-text');
+    overlay.style.display = 'flex';
+    
+    if(tipo === 'logro') {
+        texto.innerHTML = "<h2>¡Logro Obtenido!</h2><p>Has encontrado el tesoro más valioso: Mi Corazón.</p>";
+    } else if (tipo === 'carta') {
+        texto.innerHTML = "<h2>Libro y Pluma</h2><p>Desde el 30/03/2023 mi mundo es mucho mejor porque tú estás en él. ¡Te amo!</p>";
+    }
+}
+
+function cerrar() {
+    document.getElementById('overlay').style.display = 'none';
+}
