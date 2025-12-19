@@ -1,47 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-/* CURSOR DE PICO DE DIAMANTE ACTUALIZADO */
-* {
-    cursor: url('https://cur.cursors-4u.net/games/gam-4/gam387.cur'), auto !important;
-}
-
-button, .mc-button, a, [onclick] {
-    cursor: url('https://cur.cursors-4u.net/games/gam-4/gam387.cur'), auto !important;
-}
-
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'VT323', monospace;
-    overflow: hidden;
-    color: white;
-    background-color: #000;
+    margin: 0; padding: 0; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    font-family: 'VT323', monospace; overflow: hidden;
+    color: white; background-color: #000;
 }
 
-/* Capas de fondo para transiciones perfectas */
 .bg-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-    /* Duración de la mezcla: 4 segundos */
-    transition: opacity 4s ease-in-out;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    z-index: -1; transition: opacity 4s ease-in-out;
 }
 
-/* Filtro oscuro para que resalte el menú */
 .bg-layer::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.4);
 }
 
@@ -51,12 +24,8 @@ body {
 }
 
 .menu-container {
-    position: relative;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-    border: 4px solid #000;
-    z-index: 20;
+    background: rgba(0, 0, 0, 0.7); padding: 40px;
+    border: 4px solid #000; text-align: center; z-index: 20;
 }
 
 .logo-main { font-size: 4.5rem; margin: 0; text-shadow: 5px 5px #373737; }
@@ -79,6 +48,48 @@ body {
 }
 
 .mc-button:hover { background-color: #5AA35F; }
+
+/* HUD ESTILO MINECRAFT */
+.hud-container {
+    position: fixed; bottom: 20px; left: 50%;
+    transform: translateX(-50%); z-index: 30; pointer-events: none;
+}
+
+.bars-wrapper {
+    display: flex; justify-content: space-between;
+    width: 380px; margin-bottom: 5px;
+}
+
+.hearts, .food { font-size: 1.2rem; filter: drop-shadow(2px 2px #000); letter-spacing: -2px; }
+
+.exp-bar-container {
+    width: 380px; height: 10px; background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #000; position: relative;
+}
+
+.exp-bar-fill { width: 100%; height: 100%; background: #7cfc00; }
+
+.exp-number {
+    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+    color: #7cfc00; font-size: 1.6rem; text-shadow: 2px 2px #000;
+}
+
+/* CHAT ESTILO MINECRAFT */
+.mc-chat {
+    position: fixed; bottom: 100px; left: 20px;
+    width: 450px; height: 180px; display: flex;
+    flex-direction: column; justify-content: flex-end;
+    pointer-events: none; z-index: 25; font-size: 1.3rem;
+}
+
+.chat-line {
+    margin: 2px 0; text-shadow: 2px 2px #000;
+    background: rgba(0, 0, 0, 0.3); padding: 2px 8px; width: fit-content;
+}
+
+.chat-achievement { color: #FFF; }
+.chat-achievement span { color: #55FF55; } /* Verde de logro */
+.chat-system { color: #AAA; }
 
 .overlay {
     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
