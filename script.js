@@ -1,50 +1,50 @@
-const imagenes = ['imagen2.png', 'imagen3.png'];
-const mensajes = ["¡Eres mi diamante!", "¡Jugador 1 + Jugador 2!", "¡Mi bioma favorito!", "¡Crafteando recuerdos!"];
-
+const imagenes = ['imagen2.png', 'imagen3.png', 'imagen4.png'];
+const frasesSplash = ["¡Eres mi diamante!", "¡Jugador 1 + Jugador 2!", "¡Mi bioma favorito!", "¡Crafteando recuerdos!"];
 let indiceActual = 0;
-let capaActiva = 1;
+let tiempoInactivo;
 
+// GESTIÓN DE MUERTE POR INACTIVIDAD
+function resetearInactividad() {
+    clearTimeout(tiempoInactivo);
+    tiempoInactivo = setTimeout(morir, 30000); // 30 segundos
+}
+
+function morir() {
+    document.getElementById('game-over-screen').style.display = 'flex';
+}
+
+function renacer() {
+    document.getElementById('game-over-screen').style.display = 'none';
+    resetearInactividad();
+}
+
+// GESTIÓN DE FONDOS
 function cambiarFondo() {
     const bg1 = document.getElementById('bg-1');
     const bg2 = document.getElementById('bg-2');
     const splash = document.getElementById('splash');
     const nuevaRuta = imagenes[indiceActual] + "?v=" + new Date().getTime();
-    
-    if (capaActiva === 1) {
-        bg2.style.backgroundImage = `url('${nuevaRuta}')`;
-        bg2.style.opacity = 1; bg1.style.opacity = 0;
-        capaActiva = 2;
-    } else {
-        bg1.style.backgroundImage = `url('${nuevaRuta}')`;
-        bg1.style.opacity = 1; bg2.style.opacity = 0;
-        capaActiva = 1;
-    }
 
-    if(splash) {
-        splash.innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
-    }
+    bg1.style.backgroundImage = `url('${nuevaRuta}')`;
+    if(splash) splash.innerText = frasesSplash[Math.floor(Math.random() * frasesSplash.length)];
     indiceActual = (indiceActual + 1) % imagenes.length;
 }
 
-function agregarMensajeChat(texto, clase) {
-    const chatBox = document.getElementById('chat-box');
-    const linea = document.createElement('div');
-    linea.className = 'chat-line ' + clase;
-    linea.innerHTML = texto;
-    chatBox.appendChild(linea);
-}
-
+// INICIO DEL SITIO
 window.onload = function() {
-    // 1. Iniciar fondos
-    const bg1 = document.getElementById('bg-1');
-    bg1.style.backgroundImage = `url('${imagenes[0]}?v=${new Date().getTime()}')`;
+    // 1. Carga inicial de fondo
+    document.getElementById('bg-1').style.backgroundImage = `url('${imagenes[0]}')`;
     setInterval(cambiarFondo, 12000);
 
-    // 2. Lógica de Pantalla de Carga
-    const loadFill = document.getElementById('load-fill');
-    const loadingScreen = document.getElementById('loading-screen');
-    const subtext = document.getElementById('loading-subtext');
+    // 2. Control de inactividad
+    window.onmousemove = resetearInactividad;
+    window.onclick = resetearInactividad;
+    resetearInactividad();
+
+    // 3. Animación de pantalla de carga
     let progreso = 0;
+    const loadFill = document.getElementById('load-fill');
+    const subtext = document.getElementById('loading-subtext');
 
     const intervaloCarga = setInterval(() => {
         progreso += Math.random() * 15;
@@ -57,22 +57,36 @@ window.onload = function() {
         if (progreso === 100) {
             clearInterval(intervaloCarga);
             setTimeout(() => {
-                loadingScreen.style.opacity = "0";
+                document.getElementById('loading-screen').style.opacity = "0";
                 setTimeout(() => {
-                    loadingScreen.style.display = "none";
-                    iniciarChat(); // Inicia el chat tras la carga
+                    document.getElementById('loading-screen').style.display = "none";
+                    iniciarChat();
                 }, 800);
             }, 500);
         }
     }, 300);
 };
 
+// CHAT SECUENCIAL
 function iniciarChat() {
-    setTimeout(() => agregarMensajeChat("Jesu se ha unido al mundo", ""), 1000);
-    setTimeout(() => agregarMensajeChat("Jesu ha obtenido el logro: <span>Visitar minecraft de Ane</span>", "chat-achievement"), 4000);
-    setTimeout(() => agregarMensajeChat("Se ha guardado la partida con éxito!", "chat-system"), 7000);
+    const chatBox = document.getElementById('chat-box');
+    const mensajes = [
+        { t: "Jesu se ha unido al mundo", c: "" },
+        { t: "Jesu ha obtenido el logro: <span style='color:#55FF55'>Visitar minecraft de Ane</span>", c: "" },
+        { t: "Se ha guardado la partida con éxito!", c: "chat-system" }
+    ];
+
+    mensajes.forEach((m, i) => {
+        setTimeout(() => {
+            const div = document.createElement('div');
+            div.className = 'chat-line ' + m.c;
+            div.innerHTML = m.t;
+            chatBox.appendChild(div);
+        }, (i + 1) * 3000);
+    });
 }
 
+// FUNCIONES DE INTERFAZ
 function mostrarSorpresa(tipo) {
     const overlay = document.getElementById('overlay');
     const texto = document.getElementById('modal-text');
@@ -82,6 +96,4 @@ function mostrarSorpresa(tipo) {
     else if (tipo === 'craft') texto.innerHTML = "<h2>Mesa de Trabajo</h2><p>Resultado: Un amor infinito. ❤️</p>";
 }
 
-function cerrar() {
-    document.getElementById('overlay').style.display = 'none';
-}
+function cerrar() { document.getElementById('overlay').style.display = 'none'; }
