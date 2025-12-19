@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-/* CURSOR DE ESPADA ACTUALIZADO */
+/* CURSOR DE ESPADA INCRUSTADO (BASE64) */
 * {
-    cursor: url('https://cdn.custom-cursor.com/db/8354/32/minecraft-diamond-sword-cursor.png'), auto !important;
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACNklEQVRYR8WXsU0DMRREf0fCDBySjSAlAhI6SIdEmYIsREpE6SAp6SAdEnI6SAdYAyRgpLCHpED8S9ZIsS9/ObeSInun8/nef78726SUEv88atV69wH0gS9S6S3wAnwC78AnMMu8m2VvV+B7At8C78A78AnMMu8ue0vAt8A78A78AnMMu8ueErB2PAn8At8C78AnMMu8m2W9A98C78A78AnMMu8ue7vA5eMJ4Bf4FngH3oFPYJZ5N8veEvAt8A78AnMMu8veEvAt8A78AnMMu8veLnvvA78m8CvB36S+u7N2vAv8SvA3qe/urB3vAr8S/E3quztrR4E/Dfw08NPAz9nxYQG9En9X97rWjnfN+F3d61o73jXjd3Wva+0p8WnF30v8vcTfS3xasX+3m5VfXfy9xN9L/L3EpxV7S/yU+LTi7yX+XuLvJT6t2FvS68S7En8v8fcSf6/Yp5X7En8v8fcSf6/Yp5X7vMSnFX8v8fcSf6/Yp5X7En8v8fcSf6/Yp5X7En8v8fcSf6/Yp5X7tHJe4tOKv5f4e4m/V+zTyn2Jv5f4e4m/V+zTyn2Jv5f4e4m/V+zTyn2e9p8SrxW/K35X/K74XfG74nfF74rfFb8rflf8rvhd8bvix16WvP1/V+KvBb8W/Frwa8GvBb8W/Frwa8GvBb8W/Frwa8GvBT/2suTt7f29O+A78A58ArPMu1n29qWueAf8Bf4NfAKzzLtZdi91W/Ev7L36L89I/AEGfF9f38f/YQAAAABJRU5ErkJggg=='), auto !important;
 }
 
 button, .mc-button, a {
-    cursor: url('https://cdn.custom-cursor.com/db/8354/32/minecraft-diamond-sword-cursor.png'), auto !important;
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACNklEQVRYR8WXsU0DMRREf0fCDBySjSAlAhI6SIdEmYIsREpE6SAp6SAdEnI6SAdYAyRgpLCHpED8S9ZIsS9/ObeSInun8/nef78726SUEv88atV69wH0gS9S6S3wAnwC78AnMMu8m2VvV+B7At8C78A78AnMMu8ue0vAt8A78A78AnMMu8ueErB2PAn8At8C78AnMMu8m2W9A98C78A78AnMMu8ue7vA5eMJ4Bf4FngH3oFPYJZ5N8veEvAt8A78AnMMu8veEvAt8A78AnMMu8veLnvvA78m8CvB36S+u7N2vAv8SvA3qe/urB3vAr8S/E3quztrR4E/Dfw08NPAz9nxYQG9En9X97rWjnfN+F3d61o73jXjd3Wva+0p8WnF30v8vcTfS3xasX+3m5VfXfy9xN9L/L3EpxV7S/yU+LTi7yX+XuLvJT6t2FvS68S7En8v8fcSf6/Yp5X7En8v8fcSf6/Yp5X7vMSnFX8v8fcSf6/Yp5X7En8v8fcSf6/Yp5X7En8v8fcSf6/Yp5X7En8v8fcSf6/Yp5X7tHJe4tOKv5f4e4m/V+zTyn2Jv5f4e4m/V+zTyn2Jv5f4e4m/V+zTyn2e9p8SrxW/K35X/K74XfG74nfF74rfFb8rflf8rvhd8bvix16WvP1/V+KvBb8W/Frwa8GvBb8W/Frwa8GvBb8W/Frwa8GvBT/2suTt7f29O+A78A58ArPMu1n29qWueAf8Bf4NfAKzzLtZdi91W/Ev7L36L89I/AEGfF9f38f/YQAAAABJRU5ErkJggg=='), auto !important;
 }
 
 body {
@@ -22,7 +22,6 @@ body {
     background-color: #000;
 }
 
-/* Capas de fondo para transiciones perfectas */
 .bg-layer {
     position: fixed;
     top: 0;
@@ -33,11 +32,9 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
-    /* Duración de la mezcla: 4 segundos */
     transition: opacity 4s ease-in-out;
 }
 
-/* Filtro oscuro para que resalte el menú */
 .bg-layer::after {
     content: '';
     position: absolute;
