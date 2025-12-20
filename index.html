@@ -78,9 +78,38 @@
 
     <div class="mc-chat" id="chat-box"></div>
 
+    <div id="command-trigger" onclick="abrirConsola()">
+        <img src="https://raw.githubusercontent.com/pablo-mendez/minecraft-assets/master/assets/minecraft/textures/gui/accessibility.png" width="30">
+        <span>Comandos</span>
+    </div>
+
+    <div id="console-overlay" class="console-overlay">
+        <div class="console-box">
+            <div class="console-header">CONSOLA DE COMANDOS</div>
+            <div class="command-list">
+                <p>Lista de Comandos:</p>
+                <ul>
+                    <li>/amor</li><li>/ane</li><li>/clima soleado</li>
+                    <li>/tp Ane</li><li>/spawn corazón</li><li>/speed 255</li>
+                    <li>/seed</li><li>/help</li><li>/weather clear</li>
+                    <li>/give @p diamond_ring 1</li>
+                    <li>/effect give jesu night_vision</li>
+                </ul>
+            </div>
+            <input type="text" id="command-input" placeholder="Escribe un comando..." onkeydown="if(event.key==='Enter') ejecutarComando()">
+            <div class="console-buttons">
+                <button class="mc-button small" onclick="ejecutarComando()">EJECUTAR</button>
+                <button class="mc-button small grey" onclick="cerrarConsola()">CERRAR</button>
+            </div>
+        </div>
+    </div>
+
     <div id="overlay" class="overlay" onclick="cerrar()">
         <div class="modal"><div id="modal-text"></div><br><button class="mc-button" style="width: 120px;">CERRAR</button></div>
     </div>
+
+    <div id="giant-msg" class="giant-msg">TE AMO MUCHO PRECIOSO</div>
+    <div id="giant-heart" class="giant-heart">❤️</div>
 
     <script src="script.js"></script>
 </body>
