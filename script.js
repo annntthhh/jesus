@@ -4,20 +4,21 @@ let indiceActual = 0;
 let capaActiva = 1;
 let tiempoInactivo;
 
-// MENSAJE SECRETO RELOJ
+// FUNCIÓN PARA EL CLIC EN EL CORAZÓN
+function clickCorazonAne() {
+    lluviaCorazonesMasiva();
+    enviarMensajeChat("<span style='color:#FF5555'>¡Has recibido mucho amor de Ane!</span>");
+}
+
 function mensajeSecretoReloj() {
     const ahora = new Date();
     const hora = ahora.getHours();
-    let msg = "";
-    if (hora >= 6 && hora < 18) {
-        msg = "<span style='color:#FFFF55'>Ane dice: Que tengas un día tan brillante como tú.</span>";
-    } else {
-        msg = "<span style='color:#AAFFFF'>Ane dice: Sueña con los angelitos (o conmigo).</span>";
-    }
+    let msg = (hora >= 6 && hora < 18) ? 
+        "<span style='color:#FFFF55'>Ane dice: Que tengas un día tan brillante como tú.</span>" : 
+        "<span style='color:#AAFFFF'>Ane dice: Sueña con los angelitos (o conmigo).</span>";
     enviarMensajeChat(msg);
 }
 
-// LLUVIA DE CORAZONES
 function lluviaCorazonesMasiva() {
     for (let i = 0; i < 30; i++) {
         setTimeout(() => {
@@ -42,7 +43,6 @@ function spawnHeart(x, y) {
     setTimeout(() => heart.remove(), 1000);
 }
 
-// LLUVIA CLIMÁTICA
 function toggleRain(show) {
     const container = document.getElementById('rain-container');
     container.innerHTML = '';
@@ -63,7 +63,6 @@ function toggleRain(show) {
     }
 }
 
-// CONSOLA DE COMANDOS
 function abrirConsola() { 
     document.getElementById('console-overlay').style.display = 'flex'; 
     document.getElementById('command-input').focus(); 
@@ -82,6 +81,12 @@ function ejecutarComando() {
         case '/advancement grant jesu everything':
             lluviaCorazonesMasiva();
             enviarMensajeChat("<span style='color:#FFFF55'>Jesu ha completado el desafío: Ser el dueño de los pensamientos de Ane</span>");
+            break;
+        case '/hug jesu':
+            enviarMensajeChat("<span style='color:#FF55FF'>¡Has recibido un abrazo virtual de Ane!</span>");
+            break;
+        case '/whitelist add jesu':
+            enviarMensajeChat("<span style='color:#55FF55'>Jesu ha sido añadido a la lista VIP del corazón de Ane (Acceso exclusivo)</span>");
             break;
         case '/ane':
             const gMsg = document.getElementById('giant-msg');
@@ -122,7 +127,6 @@ function ejecutarComando() {
     }
 }
 
-// FUNCIONES DE INTERFAZ Y CHAT
 function enviarMensajeChat(txt) {
     const chat = document.getElementById('chat-box');
     const div = document.createElement('div');
