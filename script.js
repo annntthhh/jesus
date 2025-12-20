@@ -26,7 +26,6 @@ function lluviaCorazonesMasiva() {
             spawnHeart(x, y);
         }, i * 50);
     }
-    enviarMensajeChat("<span style='color:#FF5555'>¡Has recibido mucho amor de Ane!</span>");
 }
 
 function spawnHeart(x, y) {
@@ -80,8 +79,9 @@ function ejecutarComando() {
     cerrarConsola();
 
     switch(cmd) {
-        case '/amor':
+        case '/advancement grant jesu everything':
             lluviaCorazonesMasiva();
+            enviarMensajeChat("<span style='color:#FFFF55'>Jesu ha completado el desafío: Ser el dueño de los pensamientos de Ane</span>");
             break;
         case '/ane':
             const gMsg = document.getElementById('giant-msg');
@@ -90,7 +90,6 @@ function ejecutarComando() {
             break;
         case '/clima soleado':
             toggleRain(false);
-            enviarMensajeChat("<span style='color:#55FF55'>Ane ha despejado el cielo para Jesu</span>");
             break;
         case '/tp ane':
             enviarMensajeChat("<span style='color:#AAFFFF'>Teletransportando a Jesu al lado de Ane... Destino: El lugar más feliz del mundo</span>");
@@ -114,7 +113,6 @@ function ejecutarComando() {
             break;
         case '/weather clear':
             toggleRain(false);
-            enviarMensajeChat("<span style='color:#55FF55'>Ane ha quitado las nubes para que Jesu vea el sol</span>");
             break;
         case '/help':
             enviarMensajeChat("<span style='color:#FFFF55'>¿Necesitas ayuda? Solo llama a Ane, ella siempre está para ti</span>");
