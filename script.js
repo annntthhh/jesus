@@ -4,7 +4,7 @@ let indiceActual = 0;
 let capaActiva = 1;
 let tiempoInactivo;
 
-// MENSAJE SECRETO RELOJ (Ane dice...)
+// MENSAJE SECRETO RELOJ
 function mensajeSecretoReloj() {
     const ahora = new Date();
     const hora = ahora.getHours();
@@ -17,7 +17,7 @@ function mensajeSecretoReloj() {
     enviarMensajeChat(msg);
 }
 
-// LLUVIA DE CORAZONES (Ane envía flores/amor...)
+// LLUVIA DE CORAZONES
 function lluviaCorazonesMasiva() {
     for (let i = 0; i < 30; i++) {
         setTimeout(() => {
@@ -64,6 +64,67 @@ function toggleRain(show) {
     }
 }
 
+// CONSOLA DE COMANDOS
+function abrirConsola() { 
+    document.getElementById('console-overlay').style.display = 'flex'; 
+    document.getElementById('command-input').focus(); 
+}
+function cerrarConsola() { 
+    document.getElementById('console-overlay').style.display = 'none'; 
+    document.getElementById('command-input').value = ''; 
+}
+
+function ejecutarComando() {
+    const input = document.getElementById('command-input');
+    const cmd = input.value.toLowerCase().trim();
+    cerrarConsola();
+
+    switch(cmd) {
+        case '/amor':
+            lluviaCorazonesMasiva();
+            break;
+        case '/ane':
+            const gMsg = document.getElementById('giant-msg');
+            gMsg.style.display = 'block';
+            setTimeout(() => gMsg.style.display = 'none', 3000);
+            break;
+        case '/clima soleado':
+            toggleRain(false);
+            enviarMensajeChat("<span style='color:#55FF55'>Ane ha despejado el cielo para Jesu</span>");
+            break;
+        case '/tp ane':
+            enviarMensajeChat("<span style='color:#AAFFFF'>Teletransportando a Jesu al lado de Ane... Destino: El lugar más feliz del mundo</span>");
+            break;
+        case '/spawn corazón':
+            const gHeart = document.getElementById('giant-heart');
+            gHeart.style.display = 'block';
+            setTimeout(() => gHeart.style.display = 'none', 1000);
+            break;
+        case '/effect give jesu night_vision':
+            enviarMensajeChat("<span style='color:#AA55FF'>Efecto aplicado: Ahora puedes ver lo mucho que te quiero, incluso en la oscuridad</span>");
+            break;
+        case '/speed 255':
+            enviarMensajeChat("<span style='color:#55FFFF'>Velocidad máxima: ¡Corriendo hacia nuestro futuro juntos!</span>");
+            break;
+        case '/seed':
+            enviarMensajeChat("La semilla de este mundo es: <span style='color:#FFFF55'>30032023</span> (El día que todo empezó)");
+            break;
+        case '/give @p diamond_ring 1':
+            enviarMensajeChat("¡Has recibido <span style='color:#55FFFF'>[Anillo de Diamante]</span> de parte de Ane!");
+            break;
+        case '/weather clear':
+            toggleRain(false);
+            enviarMensajeChat("<span style='color:#55FF55'>Ane ha quitado las nubes para que Jesu vea el sol</span>");
+            break;
+        case '/help':
+            enviarMensajeChat("<span style='color:#FFFF55'>¿Necesitas ayuda? Solo llama a Ane, ella siempre está para ti</span>");
+            break;
+        default:
+            enviarMensajeChat("<span style='color:#FF5555'>Comando desconocido. Escribe /help para ver la lista.</span>");
+    }
+}
+
+// FUNCIONES DE INTERFAZ Y CHAT
 function enviarMensajeChat(txt) {
     const chat = document.getElementById('chat-box');
     const div = document.createElement('div');
@@ -73,7 +134,6 @@ function enviarMensajeChat(txt) {
     if (chat.children.length > 8) chat.removeChild(chat.firstChild);
 }
 
-// BARRA ROSA
 let progresoAmor = 0;
 function subirBarraAmor() {
     if (progresoAmor < 100) {
@@ -85,7 +145,7 @@ function subirBarraAmor() {
 }
 
 document.addEventListener('click', (e) => {
-    if (!e.target.closest('.poppy-item')) spawnHeart(e.clientX, e.clientY);
+    if (!e.target.closest('.poppy-item') && !e.target.closest('#command-trigger') && !e.target.closest('.console-box')) spawnHeart(e.clientX, e.clientY);
 });
 
 function actualizarReloj() {
@@ -122,7 +182,6 @@ window.onload = function() {
     document.getElementById('bg-1').style.backgroundImage = `url('${imagenes[0]}')`;
     setInterval(cambiarFondo, 10000);
     setInterval(subirBarraAmor, 2000);
-
     setInterval(() => {
         toggleRain(true);
         setTimeout(() => toggleRain(false), 15000);
