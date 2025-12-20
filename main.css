@@ -2,8 +2,9 @@
 
 body { margin: 0; padding: 0; height: 100vh; display: flex; justify-content: center; align-items: center; font-family: 'VT323', monospace; overflow: hidden; color: white; background-color: #000; cursor: crosshair; }
 
-/* AMAPOLA FLOTANTE (Z-INDEX ALTO PARA QUE SE VEA) */
-.poppy-item { position: fixed; bottom: 120px; right: 30px; z-index: 999; cursor: pointer; animation: floatFlower 3s ease-in-out infinite; }
+/* CORAZÓN FLOTANTE */
+.poppy-item { position: fixed; bottom: 120px; right: 40px; z-index: 999; cursor: pointer; animation: floatFlower 3s ease-in-out infinite; }
+.pixel-heart { color: #ff0000; font-size: 50px; text-shadow: 4px 4px #7a0000; }
 .poppy-tooltip { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); padding: 2px 8px; font-size: 0.9rem; border: 1px solid #555; white-space: nowrap; visibility: hidden; opacity: 0; transition: 0.3s; }
 .poppy-item:hover .poppy-tooltip { visibility: visible; opacity: 1; }
 @keyframes floatFlower { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
