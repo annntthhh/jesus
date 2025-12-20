@@ -4,14 +4,46 @@ let indiceActual = 0;
 let capaActiva = 1;
 let tiempoInactivo;
 
-// LÓGICA DE LA BARRA ROSA (SE LLENA SOLA)
+// LLUVIA
+function toggleRain(show) {
+    const container = document.getElementById('rain-container');
+    const chat = document.getElementById('chat-box');
+    container.innerHTML = '';
+    
+    if (show) {
+        container.style.display = 'block';
+        for (let i = 0; i < 100; i++) {
+            const drop = document.createElement('div');
+            drop.className = 'drop';
+            drop.style.left = Math.random() * 100 + 'vw';
+            drop.style.animationDuration = (Math.random() * 0.5 + 0.5) + 's';
+            drop.style.animationDelay = Math.random() * 2 + 's';
+            container.appendChild(drop);
+        }
+        enviarMensajeChat("<span style='color:#AAAAAA'>El clima ha cambiado a lluvia</span>");
+    } else {
+        container.style.display = 'none';
+        enviarMensajeChat("<span style='color:#55FF55'>El sol vuelve a brillar para Jesu</span>");
+    }
+}
+
+function enviarMensajeChat(txt) {
+    const chat = document.getElementById('chat-box');
+    const div = document.createElement('div');
+    div.className = 'chat-line';
+    div.innerHTML = txt;
+    chat.appendChild(div);
+    if (chat.children.length > 8) chat.removeChild(chat.firstChild);
+}
+
+// BARRA ROSA
 let progresoAmor = 0;
 function subirBarraAmor() {
     if (progresoAmor < 100) {
         progresoAmor += 1;
         document.getElementById('love-fill').style.width = progresoAmor + "%";
     } else {
-        progresoAmor = 0; // Reinicia al llenarse
+        progresoAmor = 0;
     }
 }
 
@@ -66,6 +98,12 @@ window.onload = function() {
     setInterval(cambiarFondo, 10000);
     setInterval(subirBarraAmor, 2000);
 
+    // CICLO DE CLIMA (Lluvia cada 1 min aprox, dura 15 seg)
+    setInterval(() => {
+        toggleRain(true);
+        setTimeout(() => toggleRain(false), 15000);
+    }, 60000);
+
     window.onmousemove = resetearInactividad;
     window.onclick = resetearInactividad;
     resetearInactividad();
@@ -85,19 +123,9 @@ window.onload = function() {
 };
 
 function iniciarChat() {
-    const msgs = [
-        {t: "Jesu se ha unido al mundo", c: ""},
-        {t: "Jesu ha obtenido el logro: <span style='color:#55FF55'>Visitar minecraft de Ane</span>", c: ""},
-        {t: "Se ha guardado la partida con éxito!", c: "chat-system"}
-    ];
-    msgs.forEach((m, i) => {
-        setTimeout(() => {
-            const div = document.createElement('div');
-            div.className = 'chat-line ' + m.c;
-            div.innerHTML = m.t;
-            document.getElementById('chat-box').appendChild(div);
-        }, (i + 1) * 3000);
-    });
+    enviarMensajeChat("Jesu se ha unido al mundo");
+    enviarMensajeChat("Jesu ha obtenido el logro: <span style='color:#55FF55'>Visitar minecraft de Ane</span>");
+    setTimeout(() => enviarMensajeChat("<span class='chat-system'>Se ha guardado la partida con éxito!</span>"), 3000);
 }
 
 function mostrarSorpresa(tipo) {
