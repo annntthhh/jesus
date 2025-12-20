@@ -1,15 +1,52 @@
 const imagenes = ['imagen2.png', 'imagen3.png'];
-const frasesSplash = ["¡Eres mi diamante!", "¡Jugador 1 + Jugador 2!", "¡Mi bioma favorito!", "¡Crafteando recuerdos!"];
+const frasesSplash = ["¡Eres mi diamante!", "¡Jugador 1 + Jugador 2!", "¡Mi bioma favorito!", "¡Crafteando recuerdos!", "¡Amapola para mi amor!"];
 let indiceActual = 0;
 let capaActiva = 1;
 let tiempoInactivo;
 
-// LLUVIA
+// MENSAJE SECRETO RELOJ
+function mensajeSecretoReloj() {
+    const ahora = new Date();
+    const hora = ahora.getHours();
+    let msg = "";
+    if (hora >= 6 && hora < 18) {
+        msg = "<span style='color:#FFFF55'>Jesu dice: Que tengas un día tan brillante como tú.</span>";
+    } else {
+        msg = "<span style='color:#AAFFFF'>Jesu dice: Sueña con los angelitos (o conmigo).</span>";
+    }
+    enviarMensajeChat(msg);
+}
+
+// LLUVIA DE CORAZONES (Clic amapola)
+function lluviaCorazonesMasiva() {
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            spawnHeart(x, y);
+        }, i * 50);
+    }
+    enviarMensajeChat("<span style='color:#FF5555'>¡Has recibido un regalo de flores de Jesu!</span>");
+}
+
+function spawnHeart(x, y) {
+    const heart = document.createElement('div');
+    heart.className = 'heart-particle';
+    heart.innerHTML = '❤️';
+    heart.style.left = x + 'px';
+    heart.style.top = y + 'px';
+    const moveX = (Math.random() - 0.5) * 400;
+    const moveY = (Math.random() - 0.5) * 400 - 100;
+    heart.style.setProperty('--x', `${moveX}px`);
+    heart.style.setProperty('--y', `${moveY}px`);
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1000);
+}
+
+// LLUVIA CLIMÁTICA
 function toggleRain(show) {
     const container = document.getElementById('rain-container');
-    const chat = document.getElementById('chat-box');
     container.innerHTML = '';
-    
     if (show) {
         container.style.display = 'block';
         for (let i = 0; i < 100; i++) {
@@ -48,19 +85,7 @@ function subirBarraAmor() {
 }
 
 document.addEventListener('click', (e) => {
-    for (let i = 0; i < 5; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart-particle';
-        heart.innerHTML = '❤️';
-        heart.style.left = e.clientX + 'px';
-        heart.style.top = e.clientY + 'px';
-        const moveX = (Math.random() - 0.5) * 200;
-        const moveY = (Math.random() - 0.5) * 200 - 50;
-        heart.style.setProperty('--x', `${moveX}px`);
-        heart.style.setProperty('--y', `${moveY}px`);
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 1000);
-    }
+    if (!e.target.closest('.poppy-item')) spawnHeart(e.clientX, e.clientY);
 });
 
 function actualizarReloj() {
@@ -98,7 +123,6 @@ window.onload = function() {
     setInterval(cambiarFondo, 10000);
     setInterval(subirBarraAmor, 2000);
 
-    // CICLO DE CLIMA (Lluvia cada 1 min aprox, dura 15 seg)
     setInterval(() => {
         toggleRain(true);
         setTimeout(() => toggleRain(false), 15000);
