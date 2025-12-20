@@ -4,7 +4,17 @@ let indiceActual = 0;
 let capaActiva = 1;
 let tiempoInactivo;
 
-// CORAZONES AL HACER CLIC
+// LÓGICA DE LA BARRA ROSA (SE LLENA SOLA)
+let progresoAmor = 0;
+function subirBarraAmor() {
+    if (progresoAmor < 100) {
+        progresoAmor += 1;
+        document.getElementById('love-fill').style.width = progresoAmor + "%";
+    } else {
+        progresoAmor = 0; // Reinicia al llenarse
+    }
+}
+
 document.addEventListener('click', (e) => {
     for (let i = 0; i < 5; i++) {
         const heart = document.createElement('div');
@@ -54,6 +64,8 @@ window.onload = function() {
     actualizarReloj(); setInterval(actualizarReloj, 10000);
     document.getElementById('bg-1').style.backgroundImage = `url('${imagenes[0]}')`;
     setInterval(cambiarFondo, 10000);
+    setInterval(subirBarraAmor, 2000);
+
     window.onmousemove = resetearInactividad;
     window.onclick = resetearInactividad;
     resetearInactividad();
