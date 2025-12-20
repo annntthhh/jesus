@@ -1,10 +1,10 @@
 const imagenes = ['imagen2.png', 'imagen3.png'];
-const frasesSplash = ["¡Eres mi diamante!", "¡Jugador 1 + Jugador 2!", "¡Mi bioma favorito!", "¡Crafteando recuerdos!", "¡Amapola para mi amor!"];
+const frasesSplash = ["¡Eres mi diamante!", "¡Jugador 1 + Jugador 2!", "¡Mi bioma favorito!", "¡Crafteando recuerdos!", "¡Mucho amor!"];
 let indiceActual = 0;
 let capaActiva = 1;
 let tiempoInactivo;
 
-// MENSAJE SECRETO RELOJ
+// MENSAJE SECRETO RELOJ (Ane dice...)
 function mensajeSecretoReloj() {
     const ahora = new Date();
     const hora = ahora.getHours();
@@ -17,7 +17,7 @@ function mensajeSecretoReloj() {
     enviarMensajeChat(msg);
 }
 
-// LLUVIA DE CORAZONES (Clic amapola)
+// LLUVIA DE CORAZONES (Ane envía flores/amor...)
 function lluviaCorazonesMasiva() {
     for (let i = 0; i < 30; i++) {
         setTimeout(() => {
@@ -26,7 +26,7 @@ function lluviaCorazonesMasiva() {
             spawnHeart(x, y);
         }, i * 50);
     }
-    enviarMensajeChat("<span style='color:#FF5555'>¡Has recibido un regalo de flores de Ane!</span>");
+    enviarMensajeChat("<span style='color:#FF5555'>¡Has recibido mucho amor de Ane!</span>");
 }
 
 function spawnHeart(x, y) {
