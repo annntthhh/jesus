@@ -4,7 +4,7 @@ let indiceActual = 0;
 let capaActiva = 1;
 let tiempoInactivo;
 
-// AGG: PARTÍCULAS DE CORAZÓN AL HACER CLIC
+// CORAZONES AL HACER CLIC
 document.addEventListener('click', (e) => {
     for (let i = 0; i < 5; i++) {
         const heart = document.createElement('div');
@@ -12,13 +12,10 @@ document.addEventListener('click', (e) => {
         heart.innerHTML = '❤️';
         heart.style.left = e.clientX + 'px';
         heart.style.top = e.clientY + 'px';
-        
-        // Dirección aleatoria
         const moveX = (Math.random() - 0.5) * 200;
         const moveY = (Math.random() - 0.5) * 200 - 50;
         heart.style.setProperty('--x', `${moveX}px`);
         heart.style.setProperty('--y', `${moveY}px`);
-
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 1000);
     }
@@ -93,8 +90,8 @@ function iniciarChat() {
 
 function mostrarSorpresa(tipo) {
     const overlay = document.getElementById('overlay');
-    overlay.style.display = 'flex';
     const texto = document.getElementById('modal-text');
+    overlay.style.display = 'flex';
     if(tipo === 'logro') texto.innerHTML = "<h2>¡Logro Obtenido!</h2><p>Has ganado mi corazón.</p>";
     else if (tipo === 'carta') texto.innerHTML = "<h2>Libro y Pluma</h2><p>Te amo desde el 30/03/2023.</p>";
     else if (tipo === 'craft') texto.innerHTML = "<h2>Mesa de Trabajo</h2><p>Resultado: Un amor infinito. ❤️</p>";
