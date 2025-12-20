@@ -10,9 +10,9 @@ function mensajeSecretoReloj() {
     const hora = ahora.getHours();
     let msg = "";
     if (hora >= 6 && hora < 18) {
-        msg = "<span style='color:#FFFF55'>Jesu dice: Que tengas un día tan brillante como tú.</span>";
+        msg = "<span style='color:#FFFF55'>Ane dice: Que tengas un día tan brillante como tú.</span>";
     } else {
-        msg = "<span style='color:#AAFFFF'>Jesu dice: Sueña con los angelitos (o conmigo).</span>";
+        msg = "<span style='color:#AAFFFF'>Ane dice: Sueña con los angelitos (o conmigo).</span>";
     }
     enviarMensajeChat(msg);
 }
@@ -26,7 +26,7 @@ function lluviaCorazonesMasiva() {
             spawnHeart(x, y);
         }, i * 50);
     }
-    enviarMensajeChat("<span style='color:#FF5555'>¡Has recibido un regalo de flores de Jesu!</span>");
+    enviarMensajeChat("<span style='color:#FF5555'>¡Has recibido un regalo de flores de Ane!</span>");
 }
 
 function spawnHeart(x, y) {
